@@ -1,0 +1,18 @@
+strong {
+    color : red;
+}
+
+.pattern {
+    width: 300px;
+    height: 64px;
+    display: inline-block;
+    background-image: url("./images/globe.png");
+    background-repeat: repeat-x;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    background-image: url("./images/webpack.svg");
+}

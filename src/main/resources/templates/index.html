@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/vendors.js" th:src="@{/vendors.js}"></script>
+    <script type="text/javascript" src="/index.js" th:src="@{/index.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="/index.css" th:href="@{/index.css}" />
+</head>
+<body>
+    <h1>default</h1>
+    <strong><div th:text="${message}"></div></strong>
+    <br/>
+
+    <h1>url-loader</h1>
+    <div class="pattern"></div>
+    <br/>
+
+    <h1>file-loader</h1>
+    <div class="image"></div>
+</body>
+</html>

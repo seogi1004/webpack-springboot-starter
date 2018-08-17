@@ -1,0 +1,32 @@
+{
+  "name": "webpack-springboot-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main/client/index.js",
+  "scripts": {
+    "prod": "webpack --env=production",
+    "dev": "webpack-dev-server --env=development",
+    "start": "npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "mini-css-extract-plugin": "^0.4.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
+    "style-loader": "^0.22.1",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.5",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "moment": "^2.22.2"
+  }
+}
