@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = (env) => {
     let clientPath = path.resolve(__dirname, 'src/main/client');
@@ -11,8 +11,11 @@ module.exports = (env) => {
     return {
         mode: !env ? 'development' : env,
         entry: {
-            vendors: [ 'jquery', 'moment' ],
+            vendors: [ 'moment' ],
             index: clientPath + '/index.js'
+        },
+        externals: {
+            jquery: "jQuery"
         },
         output: {
             path: outputPath,
@@ -83,8 +86,8 @@ module.exports = (env) => {
             new MiniCssExtractPlugin({
                 path: outputPath,
                 filename: '[name].css'
-            })
-            // , new BundleAnalyzerPlugin()
+            }),
+            new BundleAnalyzerPlugin()
         ]
     }
 }
