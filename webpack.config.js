@@ -7,12 +7,13 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = (env) => {
     let clientPath = path.resolve(__dirname, 'src/main/client');
-    let outputPath = path.resolve(__dirname, (env == 'production') ? 'src/main/resources/static' : 'out')
+    let outputPath = path.resolve(__dirname, (env == 'production') ? 'src/main/resources/static' : 'out');
+    let legacyPath = path.resolve(__dirname, 'lib');
 
     return {
         mode: !env ? 'development' : env,
         entry: {
-            vendors: [ 'jquery', 'moment' ],
+            vendors: [ 'moment' ],
             index: clientPath + '/index.js'
         },
         output: {
@@ -86,7 +87,10 @@ module.exports = (env) => {
                 filename: '[name].css'
             }),
             new webpack.ProvidePlugin({
-                _: 'lodash'
+                $: legacyPath + '/jquery-2.0.2.js',
+                util: legacyPath + "/util.js",
+                mt: 'moment',
+                join: [ 'lodash', 'join' ]
             }),
             new BundleAnalyzerPlugin()
         ]
