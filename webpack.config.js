@@ -1,8 +1,9 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = (env) => {
     let clientPath = path.resolve(__dirname, 'src/main/client');
@@ -83,8 +84,11 @@ module.exports = (env) => {
             new MiniCssExtractPlugin({
                 path: outputPath,
                 filename: '[name].css'
-            })
-            // , new BundleAnalyzerPlugin()
+            }),
+            new webpack.ProvidePlugin({
+                _: 'lodash'
+            }),
+            new BundleAnalyzerPlugin()
         ]
     }
 }
