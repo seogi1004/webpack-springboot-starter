@@ -12,7 +12,7 @@ module.exports = (env) => {
     return {
         mode: !env ? 'development' : env,
         entry: {
-            vendors: [ 'moment' ],
+            vendors: [ 'jquery', 'moment' ],
             index: clientPath + '/index.js'
         },
         output: {
