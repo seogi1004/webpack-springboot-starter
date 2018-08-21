@@ -6,9 +6,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = (env) => {
-    let clientPath = path.resolve(__dirname, 'src/main/client');
-    let outputPath = path.resolve(__dirname, (env == 'production') ? 'src/main/resources/static' : 'out');
-    let legacyPath = path.resolve(__dirname, 'lib');
+    const clientPath = path.resolve(__dirname, 'src/main/client');
+    const outputPath = path.resolve(__dirname, (env == 'production') ? 'src/main/resources/static' : 'out');
 
     return {
         mode: !env ? 'development' : env,
@@ -79,6 +78,9 @@ module.exports = (env) => {
                         outputPath: 'images/'
                     }
                 }]
+            }, {
+                test: clientPath + '/index.js',
+                use: 'imports-loader?config=>{size:50}'
             }]
         },
         plugins: [
@@ -87,10 +89,9 @@ module.exports = (env) => {
                 filename: '[name].css'
             }),
             new webpack.ProvidePlugin({
-                $: legacyPath + '/jquery-2.0.2.js',
-                util: legacyPath + "/util.js",
+                $: 'jquery',
                 mt: 'moment',
-                join: [ 'lodash', 'join' ]
+                math: path.resolve(__dirname, 'lib', 'math.js')
             }),
             new BundleAnalyzerPlugin()
         ]

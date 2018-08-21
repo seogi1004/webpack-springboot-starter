@@ -1,7 +1,7 @@
-import Styles from './index.css'
+// require('./index.css')
 
 $(function() {
     $("strong > div").html(mt().format('MMMM Do YYYY, h:mm:ss a'));
 
-    alert(join([ 'Sum', util.add(6, 4) ], ': '));
+    alert(math.add(6, 4) + ', ' + config.size);
 });
