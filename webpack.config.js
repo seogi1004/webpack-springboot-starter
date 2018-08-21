@@ -79,19 +79,14 @@ module.exports = (env) => {
                     }
                 }]
             }, {
-                test: clientPath + '/index.js',
-                use: 'imports-loader?config=>{size:50}'
+                test: path.resolve(__dirname, 'lib', 'utils.js'),
+                use: 'exports-loader?file,math,parse=helpers.parse'
             }]
         },
         plugins: [
             new MiniCssExtractPlugin({
                 path: outputPath,
                 filename: '[name].css'
-            }),
-            new webpack.ProvidePlugin({
-                $: 'jquery',
-                mt: 'moment',
-                math: path.resolve(__dirname, 'lib', 'math.js')
             }),
             new BundleAnalyzerPlugin()
         ]
